@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Video Game List</string>
+    <string name="no_data">Empty data</string>
+    <string name="something_wrong">Oops.. something went wrong</string>
+    <string name="game_image">Game Image</string>
+    <string name="description">Description</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="favorite">Favorite</string>
+    <string name="available_for">Available for</string>
+    <string name="genre">Genre</string>
+</resources>
