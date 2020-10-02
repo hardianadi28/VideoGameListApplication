@@ -1,7 +1,6 @@
 package id.hardianadi.videogamelistapplication.favorite.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +14,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_favorite.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
+import timber.log.Timber
 
 class FavoriteActivity : AppCompatActivity() {
 
@@ -58,12 +58,12 @@ class FavoriteActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         mCompositeDisposable.clear()
-        Log.d("FavoriteActivity", "onPause: mCompositeDisposable cleared")
+        Timber.d("onPause: mCompositeDisposable cleared")
     }
 
     override fun onDestroy() {
         super.onDestroy()
         mCompositeDisposable.dispose()
-        Log.d("FavoriteActivity", "onDestroy: mCompositeDisposable disposed")
+        Timber.d("onDestroy: mCompositeDisposable disposed")
     }
 }

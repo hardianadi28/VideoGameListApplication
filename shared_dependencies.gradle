@@ -32,4 +32,12 @@ dependencies {
 
     //Circle Image
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
+
+    implementation "com.google.firebase:firebase-crashlytics-ktx:$firebase_crashlytics_version"
+    implementation "com.google.firebase:firebase-analytics-ktx:$firebase_analytics_version"
+
+    implementation "com.jakewharton.timber:timber:$timber_version"
+    implementation "com.facebook.shimmer:shimmer:$shimmer_version"
 }

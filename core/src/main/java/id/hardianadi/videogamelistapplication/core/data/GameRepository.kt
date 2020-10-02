@@ -8,7 +8,6 @@ import id.hardianadi.videogamelistapplication.core.data.source.remote.network.Ap
 import id.hardianadi.videogamelistapplication.core.data.source.remote.response.GameDetailResponse
 import id.hardianadi.videogamelistapplication.core.domain.model.Game
 import id.hardianadi.videogamelistapplication.core.domain.repository.IGameRepository
-import id.hardianadi.videogamelistapplication.core.util.AppExecutors
 import id.hardianadi.videogamelistapplication.core.util.DataMapper
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -20,8 +19,7 @@ import io.reactivex.schedulers.Schedulers
  */
 class GameRepository(
     private val localDataSource: LocalDataSource,
-    val remoteDataSource: RemoteDataSource,
-    val executor: AppExecutors
+    val remoteDataSource: RemoteDataSource
 ) : IGameRepository {
     override fun getGames(): Flowable<Resource<List<Game>>> {
         return object : NetworkBoundResource<List<Game>, List<GameDetailResponse>>() {
@@ -97,7 +95,6 @@ class GameRepository(
 
             override fun saveCallResult(data: GameDetailResponse) {
                 val game = DataMapper.mapGameDetailResponseToEntity(data)
-//                executor.diskIO().execute { localDataSource.updateGameDetail(game)}
                 localDataSource.updateGameDetail(game)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -108,7 +105,6 @@ class GameRepository(
 
     override fun setFavorite(game: Game, flag: Boolean) {
         val gameEntity = DataMapper.mapGameDomainToEntity(game)
-//        executor.diskIO().execute { localDataSource.setFavoriteGame(gameEntity, flag) }
         localDataSource.setFavoriteGame(gameEntity, flag)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

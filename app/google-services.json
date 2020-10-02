@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "985550034253",
+    "firebase_url": "https://video-game-list-application.firebaseio.com",
+    "project_id": "video-game-list-application",
+    "storage_bucket": "video-game-list-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985550034253:android:cd39474f09d4499dead304",
+        "android_client_info": {
+          "package_name": "id.hardianadi.videogamelistapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985550034253-9c8kf3bpa4ltm0lq9qdocg4prok5bqhp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDva9HmqyCOAI-e1JtWH4j3Kf-jTxpooIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "985550034253-9c8kf3bpa4ltm0lq9qdocg4prok5bqhp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

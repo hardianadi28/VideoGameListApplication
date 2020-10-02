@@ -14,17 +14,6 @@ import id.hardianadi.videogamelistapplication.core.domain.model.Platform
  * @date 25/09/2020
  */
 object DataMapper {
-    fun mapGameEntityToDomain(gameEntities: List<GameEntity>): List<Game> =
-        gameEntities.map { gameEntity ->
-            Game(
-                gameEntity.id,
-                gameEntity.name,
-                gameEntity.description,
-                gameEntity.backgroundImage,
-                gameEntity.backgroundImageAdditional,
-                gameEntity.released
-            )
-        }
 
     fun mapGameDetailResponseToEntity(response: GameDetailResponse): GameEntity =
         GameEntity(

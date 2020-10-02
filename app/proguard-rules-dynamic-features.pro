@@ -23,13 +23,18 @@
 
 # Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
 # JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
+#noinspection ShrinkerUnresolvedReference
 -keep class * extends com.google.gson.TypeAdapter
+#noinspection ShrinkerUnresolvedReference
 -keep class * implements com.google.gson.TypeAdapterFactory
+#noinspection ShrinkerUnresolvedReference
 -keep class * implements com.google.gson.JsonSerializer
+#noinspection ShrinkerUnresolvedReference
 -keep class * implements com.google.gson.JsonDeserializer
 
 # Prevent R8 from leaving Data object members always null
 -keepclassmembers,allowobfuscation class * {
+#noinspection ShrinkerUnresolvedReference
 @com.google.gson.annotations.SerializedName <fields>;
 }
 
@@ -89,3 +94,5 @@ public *;
 ##---------------Begin: proguard configuration for RxJava ----------
 # Uncomment if you use RxJava
 #-dontwarn java.util.concurrent.Flow*
+#noinspection ShrinkerUnresolvedReference
+-keep public class id.hardianadi.videogamelistapplication.favorite.view.FavoriteActivity extends androidx.appcompat.app.AppCompatActivity

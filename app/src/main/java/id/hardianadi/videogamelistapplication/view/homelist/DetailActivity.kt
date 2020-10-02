@@ -3,7 +3,6 @@ package id.hardianadi.videogamelistapplication.view.homelist
 import android.graphics.text.LineBreaker
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -21,6 +20,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_detail_game.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class DetailActivity : AppCompatActivity() {
     private val viewModel: DetailViewModel by viewModel()
@@ -117,12 +117,12 @@ class DetailActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         mCompositeDisposable.clear()
-        Log.d("DetailActivity", "onPause: mCompositeDisposable cleared")
+        Timber.d("onPause: mCompositeDisposable cleared")
     }
 
     override fun onDestroy() {
         super.onDestroy()
         mCompositeDisposable.dispose()
-        Log.d("DetailActivity", "onDestroy: mCompositeDisposable disposed")
+        Timber.d("onDestroy: mCompositeDisposable disposed")
     }
 }

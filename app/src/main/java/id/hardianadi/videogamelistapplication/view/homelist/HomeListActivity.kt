@@ -1,9 +1,7 @@
 package id.hardianadi.videogamelistapplication.view.homelist
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -19,6 +17,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_home_list.*
 import kotlinx.android.synthetic.main.view_error.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class HomeListActivity : AppCompatActivity() {
 
@@ -75,13 +74,13 @@ class HomeListActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         mCompositeDisposable.clear()
-        Log.d("HomeListActivity", "onPause: mCompositeDisposable cleared")
+        Timber.d("onPause: mCompositeDisposable cleared")
     }
 
     override fun onDestroy() {
         super.onDestroy()
         mCompositeDisposable.dispose()
-        Log.d("HomeListActivity", "onDestroy: mCompositeDisposable disposed")
+        Timber.d("onDestroy: mCompositeDisposable disposed")
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -92,8 +91,14 @@ class HomeListActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_favorite -> {
-                val uri = Uri.parse("videogamelistapplication://favorite")
-                startActivity(Intent(Intent.ACTION_VIEW, uri))
+//                val uri = Uri.parse("videogamelistapplication://favorite")
+//                startActivity(Intent(Intent.ACTION_VIEW, uri))
+                startActivity(
+                    Intent(
+                        this,
+                        Class.forName("id.hardianadi.videogamelistapplication.favorite.view.FavoriteActivity")
+                    )
+                )
             }
         }
         return true
