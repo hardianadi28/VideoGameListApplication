@@ -1,5 +1,6 @@
 package id.hardianadi.videogamelistapplication.favorite.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -8,9 +9,9 @@ import id.hardianadi.videogamelistapplication.core.ui.GameListAdapter
 import id.hardianadi.videogamelistapplication.favorite.R
 import id.hardianadi.videogamelistapplication.favorite.di.favoriteModule
 import id.hardianadi.videogamelistapplication.favorite.viewmodel.FavoriteViewModel
+import id.hardianadi.videogamelistapplication.view.homelist.DetailActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_favorite.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
@@ -35,7 +36,6 @@ class FavoriteActivity : AppCompatActivity() {
     private fun loadUI() {
         mCompositeDisposable.add(
             viewModel.getFavoriteGames()
-                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { game ->
                     if (game != null) {
@@ -51,14 +51,15 @@ class FavoriteActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
             adapter = mAdapter
-
+            mAdapter.onItemClick = { selectedData ->
+                val intent = Intent(
+                    this@FavoriteActivity,
+                    Class.forName("id.hardianadi.videogamelistapplication.view.homelist.DetailActivity")
+                )
+                intent.putExtra(DetailActivity.EXTRA_DATA, selectedData.gameId)
+                startActivity(intent)
+            }
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        mCompositeDisposable.clear()
-        Timber.d("onPause: mCompositeDisposable cleared")
     }
 
     override fun onDestroy() {

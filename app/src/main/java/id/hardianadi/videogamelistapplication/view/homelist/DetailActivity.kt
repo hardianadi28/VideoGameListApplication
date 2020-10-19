@@ -125,4 +125,12 @@ class DetailActivity : AppCompatActivity() {
         mCompositeDisposable.dispose()
         Timber.d("onDestroy: mCompositeDisposable disposed")
     }
+
+    override fun onBackPressed() {
+        /*
+           Penambahan code ini berdasarkan referensi di https://issuetracker.google.com/issues/139738913
+           untuk mengatasi Memory leak in IRequestFinishCallback$Stub
+         */
+        finishAfterTransition()
+    }
 }

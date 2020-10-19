@@ -91,8 +91,6 @@ class HomeListActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_favorite -> {
-//                val uri = Uri.parse("videogamelistapplication://favorite")
-//                startActivity(Intent(Intent.ACTION_VIEW, uri))
                 startActivity(
                     Intent(
                         this,
@@ -102,5 +100,9 @@ class HomeListActivity : AppCompatActivity() {
             }
         }
         return true
+    }
+
+    override fun onBackPressed() {
+        finishAfterTransition()
     }
 }
